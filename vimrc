@@ -14,6 +14,8 @@ Plug 'flazz/vim-colorschemes'          " Set of colorschemes
 Plug 'ntpeters/vim-better-whitespace'  " Highlight and trim whitespace
 Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
 Plug 'scrooloose/nerdcommenter'        " comment stuff like toggling lines
+Plug 'pangloss/vim-javascript'         " JS syntax highlighting
+Plug 'nathanaelkane/vim-indent-guides' " indent guides
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""
