@@ -30,6 +30,6 @@ set cul               " highlight current line
 
 set nowrap            " dont wrap text
 set autoindent        " auto-indent 
-set tabstop=2         " tab spacing
-set shiftwidth=2      " indent/outdent # of cols
+set tabstop=4         " tab spacing
+set shiftwidth=4      " indent/outdent # of cols
 set expandtab         " use spaces instead of tabs
