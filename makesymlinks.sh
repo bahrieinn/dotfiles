@@ -31,4 +31,12 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
- 
+# Download vim-plug to ~/.vim if it isn't present
+
+if [ ! -e ~/.vim/autoload/plug.vim ]; then
+    echo "Could not detect vim-plug in autoload..."
+    echo "Downloading vim-plug to ./vim/autoload..."
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    echo "done"
+fi
