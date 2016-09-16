@@ -23,7 +23,7 @@ set number            " show line numbers
 set ignorecase        " make searches case-insensitive
 set ruler             " show info along bottom
 set cul               " highlight current line
-
+set backspace=2       " backspace over everything in insert mode
 """""""""""""""""""""""""""""""""""""""""
 " Text Formatting / Layout              "
 """""""""""""""""""""""""""""""""""""""""
