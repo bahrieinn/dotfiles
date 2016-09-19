@@ -7,22 +7,30 @@
 " Load plugins using vim-plug           "
 """""""""""""""""""""""""""""""""""""""""
 call plug#begin()
+
 Plug 'scrooloose/nerdtree'             " Tree directory
 Plug 'kien/ctrlp.vim'                  " fuzzy search
-Plug 'mattn/emmet-vim'                 " HTML snippets
 Plug 'flazz/vim-colorschemes'          " Set of colorschemes
 Plug 'ntpeters/vim-better-whitespace'  " Highlight and trim whitespace
 Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
 Plug 'scrooloose/nerdcommenter'        " comment stuff like toggling lines
-Plug 'pangloss/vim-javascript'         " JS syntax highlighting
 Plug 'nathanaelkane/vim-indent-guides' " indent guides
+
+" Language / framework specific plugins
+Plug 'mattn/emmet-vim'                 " HTML snippets
+Plug 'pangloss/vim-javascript'         " JS syntax
+Plug 'vim-erlang/vim-erlang-runtime'   " Erlang
+Plug 'elixir-lang/vim-elixir'          " Elixir syntax
+Plug 'vim-ruby/vim-ruby'               " Ruby syntax
+Plug 'tpope/vim-rails'                 " Rails
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""
 " General Vim Behavior                  "
 """""""""""""""""""""""""""""""""""""""""
 set nocompatible      " get rid of VI compatibility mode. SET FIRST!
-
+:let mapleader = ","  " map leader key to ','
 
 """""""""""""""""""""""""""""""""""""""""
 " Theme / Colors                        "
@@ -56,3 +64,6 @@ set expandtab         " use spaces instead of tabs
 
 " vim-better-whitespace
 autocmd BufWritePre * StripWhitespace
+
+" nerdcommenter
+filetype plugin on    " used for nerdcommenter
