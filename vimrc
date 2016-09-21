@@ -10,12 +10,13 @@ call plug#begin()
 
 Plug 'scrooloose/nerdtree'             " Tree directory
 Plug 'kien/ctrlp.vim'                  " fuzzy search
-Plug 'flazz/vim-colorschemes'          " Set of colorschemes
 Plug 'ntpeters/vim-better-whitespace'  " Highlight and trim whitespace
 Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
 Plug 'scrooloose/nerdcommenter'        " comment stuff like toggling lines
 Plug 'nathanaelkane/vim-indent-guides' " indent guides
 Plug 'vim-airline/vim-airline'         " status line
+Plug 'tpope/vim-fugitive'              " git integration
+Plug 'jacoborus/tender'                " colorscheme
 
 " Language / framework specific plugins
 Plug 'mattn/emmet-vim'                 " HTML snippets
@@ -38,7 +39,7 @@ set nocompatible      " get rid of VI compatibility mode. SET FIRST!
 """""""""""""""""""""""""""""""""""""""""
 set t_Co=256                      " enable 256-color mode
 syntax enable                     " enable syntax highlighting
-colorscheme tomorrow-night-bright " a bunch of colorschemes available from vim-colorschemes package
+colorscheme tender                " colorscheme from plugin above
 
 """""""""""""""""""""""""""""""""""""""""
 " UI Behavior                           "
