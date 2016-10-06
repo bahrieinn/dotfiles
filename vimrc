@@ -70,3 +70,6 @@ autocmd BufWritePre * StripWhitespace
 
 " nerdcommenter
 filetype plugin on    " used for nerdcommenter
+
+" nerdtree
+nmap <leader>nt :NERDTreeToggle<cr>
