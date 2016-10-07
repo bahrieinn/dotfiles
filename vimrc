@@ -17,6 +17,7 @@ Plug 'nathanaelkane/vim-indent-guides' " indent guides
 Plug 'vim-airline/vim-airline'         " status line
 Plug 'tpope/vim-fugitive'              " git integration
 Plug 'jacoborus/tender'                " colorscheme
+Plug 'mileszs/ack.vim'                 " search tool
 
 " Language / framework specific plugins
 Plug 'mattn/emmet-vim'                 " HTML snippets
@@ -77,3 +78,6 @@ let NERDTreeIgnore = ['node_modules']
 
 " CtrlP
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+
+" ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'  " use silver searcher instead of ack
