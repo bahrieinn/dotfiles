@@ -73,3 +73,7 @@ filetype plugin on    " used for nerdcommenter
 
 " nerdtree
 nmap <leader>nt :NERDTreeToggle<cr>
+let NERDTreeIgnore = ['node_modules']
+
+" CtrlP
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
