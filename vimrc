@@ -34,6 +34,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""
 set nocompatible      " get rid of VI compatibility mode. SET FIRST!
 :let mapleader = ","  " map leader key to ','
+:set noswapfile       " swap files are not that helpful anymore
 
 """""""""""""""""""""""""""""""""""""""""
 " Theme / Colors                        "
