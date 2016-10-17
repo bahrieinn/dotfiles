@@ -18,6 +18,7 @@ Plug 'vim-airline/vim-airline'         " status line
 Plug 'tpope/vim-fugitive'              " git integration
 Plug 'jacoborus/tender'                " colorscheme
 Plug 'mileszs/ack.vim'                 " search tool
+Plug 'valloric/youcompleteme'          " autocomplete plugin that works with a compiled component (pre-req MacVim)
 
 " Language / framework specific plugins
 Plug 'mattn/emmet-vim'                 " HTML snippets
