@@ -27,6 +27,7 @@ Plug 'vim-erlang/vim-erlang-runtime'   " Erlang
 Plug 'elixir-lang/vim-elixir'          " Elixir syntax
 Plug 'vim-ruby/vim-ruby'               " Ruby syntax
 Plug 'tpope/vim-rails'                 " Rails
+Plug 'lervag/vimtex'                   " LaTeX support
 
 call plug#end()
 
