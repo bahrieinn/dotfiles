@@ -85,3 +85,8 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|sv
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'  " use silver searcher instead of ack
+
+" vimtex
+let g:vimtex_view_general_options = '-r @line @pdf @tex'
+let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_fold_enabled = 0      "So large files can open more easily
