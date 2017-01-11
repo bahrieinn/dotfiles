@@ -79,6 +79,7 @@ filetype plugin on    " used for nerdcommenter
 nmap <leader>nt :NERDTreeToggle<cr>
 let NERDTreeIgnore = ['node_modules']
 let NERDTreeQuitOnOpen=1
+let NERDTreeWinSize=42
 
 " CtrlP
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
@@ -91,5 +92,3 @@ let g:vimtex_view_general_options = '-r @line @pdf @tex'
 let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_fold_enabled = 0      "So large files can open more easily
 
-" Emmet
-let g:user_emmet_leader_key='<C-E>' "change emmet key to Ctrl + E + ,
