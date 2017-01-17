@@ -13,7 +13,7 @@ Plug 'kien/ctrlp.vim'                  " fuzzy search
 Plug 'ntpeters/vim-better-whitespace'  " Highlight and trim whitespace
 Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
 Plug 'scrooloose/nerdcommenter'        " comment stuff like toggling lines
-Plug 'nathanaelkane/vim-indent-guides' " indent guides
+Plug 'Yggdroot/indentLine'             " indent lines
 Plug 'vim-airline/vim-airline'         " status line
 Plug 'tpope/vim-fugitive'              " git integration
 Plug 'jacoborus/tender'                " colorscheme
@@ -92,3 +92,5 @@ let g:vimtex_view_general_options = '-r @line @pdf @tex'
 let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_fold_enabled = 0      "So large files can open more easily
 
+" indent lines
+nmap <leader>ig :IndentLinesToggle<cr>
