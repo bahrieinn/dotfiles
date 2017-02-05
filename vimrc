@@ -37,6 +37,7 @@ call plug#end()
 set nocompatible      " get rid of VI compatibility mode. SET FIRST!
 :let mapleader = ","  " map leader key to ','
 :set noswapfile       " swap files are not that helpful anymore
+:command W w          " map W to w so it save happens anyway
 
 """""""""""""""""""""""""""""""""""""""""
 " Theme / Colors                        "
