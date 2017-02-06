@@ -19,6 +19,7 @@ Plug 'tpope/vim-fugitive'              " git integration
 Plug 'jacoborus/tender'                " colorscheme
 Plug 'mileszs/ack.vim'                 " search tool
 Plug 'valloric/youcompleteme'          " autocomplete plugin that works with a compiled component (pre-req MacVim)
+Plug 'vim-syntastic/syntastic'         " syntax checks / linting
 
 " Language / framework specific plugins
 Plug 'mattn/emmet-vim'                 " HTML snippets
@@ -34,10 +35,12 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""
 " General Vim Behavior                  "
 """""""""""""""""""""""""""""""""""""""""
-set nocompatible      " get rid of VI compatibility mode. SET FIRST!
-:let mapleader = ","  " map leader key to ','
-:set noswapfile       " swap files are not that helpful anymore
-:command W w          " map W to w so it save happens anyway
+set nocompatible              " get rid of VI compatibility mode. SET FIRST!
+:let mapleader = ","          " map leader key to ','
+:set noswapfile               " swap files are not that helpful anymore
+:command W w                  " map W to w so it save happens anyway
+:command Q q                  " map Q to q
+vmap <C-c> :w !pbcopy<CR><CR> " CTRL+c to copy to clipboard
 
 """""""""""""""""""""""""""""""""""""""""
 " Theme / Colors                        "
@@ -86,7 +89,7 @@ let NERDTreeWinSize=42
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 
 " ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column'  " use silver searcher instead of ack
+let g:ackprg = 'ag'  " use silver searcher as backend for ack
 
 " vimtex
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
@@ -95,3 +98,4 @@ let g:vimtex_fold_enabled = 0      "So large files can open more easily
 
 " indent lines
 nmap <leader>ig :IndentLinesToggle<cr>
+
