@@ -24,6 +24,7 @@ Plug 'vim-syntastic/syntastic'         " syntax checks / linting
 " Language / framework specific plugins
 Plug 'mattn/emmet-vim'                 " HTML snippets
 Plug 'pangloss/vim-javascript'         " JS syntax
+Plug 'mxw/vim-jsx'                     " JSX (depends on ^ pangloss/vim-javascript)
 Plug 'vim-erlang/vim-erlang-runtime'   " Erlang
 Plug 'elixir-lang/vim-elixir'          " Elixir syntax
 Plug 'vim-ruby/vim-ruby'               " Ruby syntax
@@ -94,4 +95,7 @@ let g:ackprg = 'ag --nogroup --column' " use silver searcher as backend for ack
 
 " indent lines
 nmap <leader>ig :IndentLinesToggle<cr>
+
+" vim-jsx
+let g:jsx_ext_required = 0 " enable jsx highlighting even for non *.jsx files
 
