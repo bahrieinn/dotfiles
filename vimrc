@@ -64,8 +64,8 @@ set laststatus=2      " always display status line
 """""""""""""""""""""""""""""""""""""""""
 set nowrap            " dont wrap text
 set autoindent        " auto-indent
-set tabstop=4         " tab spacing
-set shiftwidth=4      " indent/outdent # of cols
+set tabstop=2         " tab spacing
+set shiftwidth=2      " indent/outdent # of cols
 set expandtab         " use spaces instead of tabs
 
 
@@ -87,14 +87,10 @@ let NERDTreeWinSize=42
 
 " CtrlP
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_dont_split = 'NERD' " only take over nerdtree window on initial open
 
 " ack.vim
-let g:ackprg = 'ag'  " use silver searcher as backend for ack
-
-" vimtex
-let g:vimtex_view_general_options = '-r @line @pdf @tex'
-let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-let g:vimtex_fold_enabled = 0      "So large files can open more easily
+let g:ackprg = 'ag --nogroup --column' " use silver searcher as backend for ack
 
 " indent lines
 nmap <leader>ig :IndentLinesToggle<cr>
