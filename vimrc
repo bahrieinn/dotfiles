@@ -42,6 +42,10 @@ set nocompatible              " get rid of VI compatibility mode. SET FIRST!
 :command W w                  " map W to w so it save happens anyway
 :command Q q                  " map Q to q
 vmap <C-c> :w !pbcopy<CR><CR> " CTRL+c to copy to clipboard
+set foldmethod=indent
+set foldnestmax=2
+set foldlevelstart=1
+nnoremap z<space> za          " map code fold toggle to 'z space'
 
 """""""""""""""""""""""""""""""""""""""""
 " Theme / Colors                        "
@@ -56,9 +60,11 @@ colorscheme tender                " colorscheme from plugin above
 set number            " show line numbers
 set ignorecase        " make searches case-insensitive
 set ruler             " show info along bottom
-set cul               " highlight current line
 set backspace=2       " backspace over everything in insert mode
 set laststatus=2      " always display status line
+set nocursorline      " turn cursorline off for faster scrolling
+set ttyfast           " ttyfast and lazyredraw both perf optimizations
+set lazyredraw
 
 """""""""""""""""""""""""""""""""""""""""
 " Text Formatting / Layout              "
