@@ -42,9 +42,6 @@ set nocompatible              " get rid of VI compatibility mode. SET FIRST!
 :command W w                  " map W to w so it save happens anyway
 :command Q q                  " map Q to q
 vmap <C-c> :w !pbcopy<CR><CR> " CTRL+c to copy to clipboard
-set foldmethod=indent
-set foldnestmax=2
-set foldlevelstart=1
 nnoremap z<space> za          " map code fold toggle to 'z space'
 
 """""""""""""""""""""""""""""""""""""""""
