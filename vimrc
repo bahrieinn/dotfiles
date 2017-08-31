@@ -30,7 +30,7 @@ Plug 'elixir-lang/vim-elixir'          " Elixir syntax
 Plug 'vim-ruby/vim-ruby'               " Ruby syntax
 Plug 'tpope/vim-rails'                 " Rails
 Plug 'lervag/vimtex'                   " LaTeX support
-
+Plug 'kchmck/vim-coffee-script'        " Coffeescript
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""
