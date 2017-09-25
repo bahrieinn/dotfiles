@@ -22,3 +22,22 @@ unbind C-Up
 unbind C-Down
 unbind C-Left
 unbind C-Right
+
+# Allows for faster key repetition
+set -s escape-time 0
+
+set-option repeat-time 0
+
+# Turn mouse on
+set -g mouse on
+
+#vim keybindings in copy mode
+setw -g mode-keys vi
+
+# Setup 'v' to begin selection as in Vim
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+
+# Update default binding of `Enter` to also use copy-pipe
+unbind -t vi-copy Enter
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
