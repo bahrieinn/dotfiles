@@ -30,6 +30,7 @@ Plug 'elixir-lang/vim-elixir'          " Elixir syntax
 Plug 'vim-ruby/vim-ruby'               " Ruby syntax
 Plug 'tpope/vim-rails'                 " Rails
 Plug 'lervag/vimtex'                   " LaTeX support
+Plug 'kchmck/vim-coffee-script'        " CoffeeScript support
 
 call plug#end()
 
@@ -90,8 +91,12 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=42
 
 " CtrlP
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 let g:ctrlp_dont_split = 'NERD' " only take over nerdtree window on initial open
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --column' " use silver searcher as backend for ack

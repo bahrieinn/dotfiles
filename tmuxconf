@@ -31,7 +31,9 @@ set-option repeat-time 0
 # Turn mouse on
 set -g mouse on
 
-#vim keybindings in copy mode
+## Prior to copy & past setup below, if on mac
+## `brew install reattach-to-user-namespace` first
+# vim keybindings in copy mode
 setw -g mode-keys vi
 
 # Setup 'v' to begin selection as in Vim
