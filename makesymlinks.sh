@@ -14,8 +14,8 @@ files="vimrc"                             # list of files/folders to symlink in 
 ###################
 
 
-# Create new folder "/dotfiles_old" in homedir 
-echo -n "Creating $olddir for backup of existing dotfiles ..." 
+# Create new folder "/dotfiles_old" in homedir
+echo -n "Creating $olddir for backup of existing dotfiles ..."
 mkdir -p $olddir
 echo "done"
 
