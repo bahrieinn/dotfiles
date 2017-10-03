@@ -102,3 +102,7 @@ let g:ackprg = 'ag --nogroup --column' " use silver searcher as backend for ack
 " vim-jsx
 let g:jsx_ext_required = 0 " enable jsx highlighting even for non *.jsx files
 
+" vim-airline
+let g:airline_section_x = ''
+let g:airline_section_y = ''
+let g:airline_section_z = ''
