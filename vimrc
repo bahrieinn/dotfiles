@@ -13,7 +13,6 @@ Plug 'kien/ctrlp.vim'                  " fuzzy search
 Plug 'ntpeters/vim-better-whitespace'  " Highlight and trim whitespace
 Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
 Plug 'scrooloose/nerdcommenter'        " comment stuff like toggling lines
-Plug 'Yggdroot/indentLine'             " indent lines
 Plug 'vim-airline/vim-airline'         " status line
 Plug 'tpope/vim-fugitive'              " git integration
 Plug 'jacoborus/tender'                " colorscheme
@@ -57,9 +56,9 @@ colorscheme tender                " colorscheme from plugin above
 set number            " show line numbers
 set ignorecase        " make searches case-insensitive
 set ruler             " show info along bottom
+set cursorline        " show cursorline
 set backspace=2       " backspace over everything in insert mode
 set laststatus=2      " always display status line
-set nocursorline      " turn cursorline off for faster scrolling
 set ttyfast           " ttyfast and lazyredraw both perf optimizations
 set lazyredraw
 
@@ -99,9 +98,6 @@ let g:ctrlp_max_depth = 40
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --column' " use silver searcher as backend for ack
-
-" indent lines
-nmap <leader>ig :IndentLinesToggle<cr>
 
 " vim-jsx
 let g:jsx_ext_required = 0 " enable jsx highlighting even for non *.jsx files
