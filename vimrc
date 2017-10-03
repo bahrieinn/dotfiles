@@ -61,7 +61,7 @@ set backspace=2       " backspace over everything in insert mode
 set laststatus=2      " always display status line
 set ttyfast           " ttyfast and lazyredraw both perf optimizations
 set lazyredraw
-
+set scrolloff=5       " minimum # of lines above and below cursor on screen
 """""""""""""""""""""""""""""""""""""""""
 " Text Formatting / Layout              "
 """""""""""""""""""""""""""""""""""""""""
