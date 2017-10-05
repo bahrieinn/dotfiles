@@ -19,6 +19,7 @@ Plug 'jacoborus/tender'                " colorscheme
 Plug 'mileszs/ack.vim'                 " search tool
 Plug 'valloric/youcompleteme'          " autocomplete plugin that works with a compiled component (pre-req MacVim)
 Plug 'vim-syntastic/syntastic'         " syntax checks / linting
+Plug 'christoomey/vim-tmux-navigator'  " navigate b/w tmux splits and vim splits
 
 " Language / framework specific plugins
 Plug 'mattn/emmet-vim'                 " HTML snippets
