@@ -16,7 +16,7 @@ Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
 Plug 'scrooloose/nerdcommenter'        " comment stuff like toggling lines
 Plug 'vim-airline/vim-airline'         " status line
 Plug 'tpope/vim-fugitive'              " git integration
-Plug 'rakr/vim-one'                    " one-colorscheme
+Plug 'junegunn/seoul256.vim'           " seoul256 colorscheme
 Plug 'mileszs/ack.vim'                 " search tool
 Plug 'valloric/youcompleteme'          " autocomplete plugin that works with a compiled component (pre-req MacVim)
 Plug 'vim-syntastic/syntastic'         " syntax checks / linting
@@ -50,7 +50,8 @@ nnoremap z<space> za          " map code fold toggle to 'z space'
 """""""""""""""""""""""""""""""""""""""""
 set t_Co=256                      " enable 256-color mode
 syntax enable                     " enable syntax highlighting
-colorscheme one                   " colorscheme from plugin above
+let g:seoul256_background = 235   " background darkness (233 darkest - 239 lightest)
+colorscheme seoul256              " colorscheme from plugin above
 set background=dark               " toggle light/dark
 "set background=light
 
