@@ -38,10 +38,10 @@ call plug#end()
 " General Vim Behavior                  "
 """""""""""""""""""""""""""""""""""""""""
 set nocompatible              " get rid of VI compatibility mode. SET FIRST!
-:let mapleader = ","          " map leader key to ','
-:set noswapfile               " swap files are not that helpful anymore
-:command W w                  " map W to w so it save happens anyway
-:command Q q                  " map Q to q
+let mapleader = ","           " map leader key to ','
+set noswapfile                " swap files are not that helpful anymore
+command! W w                  " map W to w so it save happens anyway
+command! Q q                  " map Q to q
 vmap <C-c> :w !pbcopy<CR><CR> " CTRL+c to copy to clipboard
 nnoremap z<space> za          " map code fold toggle to 'z space'
 
@@ -62,11 +62,16 @@ set number            " show line numbers
 set ignorecase        " make searches case-insensitive
 set ruler             " show info along bottom
 set cursorline        " show cursorline
+set hlsearch          " highlight searching
+set incsearch         " search as you type
+set smartcase         " lets you search for ALL CAPS
 set backspace=2       " backspace over everything in insert mode
 set laststatus=2      " always display status line
 set ttyfast           " ttyfast and lazyredraw both perf optimizations
 set lazyredraw
-set scrolloff=5       " minimum # of lines above and below cursor on screen
+set scroll=4          " number of lines to scroll with ^U/^D
+set showmatch
+set scrolloff=5       " keep cursor this many lines away from top/bottom of screen
 set colorcolumn=110   " show vertical bar at column 110 for line length
 
 """""""""""""""""""""""""""""""""""""""""
@@ -97,9 +102,11 @@ let NERDTreeWinSize=42
 
 " fzf
 nnoremap <silent> <C-p> :Files<CR>
+" For fzf to ignore git stuff, pipe it through ag by setting the following in  ~/.bash_profile
+" export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 " ack.vim
-let g:ackprg = 'ag --nogroup --column' " use silver searcher as backend for ack
+let g:ackprg = 'ag --vimgrep' " use silver searcher as backend for ack
 
 " vim-jsx
 let g:jsx_ext_required = 0 " enable jsx highlighting even for non *.jsx files
