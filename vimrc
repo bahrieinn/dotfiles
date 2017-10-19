@@ -9,13 +9,14 @@
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'             " Tree directory
-Plug 'kien/ctrlp.vim'                  " fuzzy search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
+Plug 'junegunn/fzf.vim'                " fuzzy search
 Plug 'ntpeters/vim-better-whitespace'  " Highlight and trim whitespace
 Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
 Plug 'scrooloose/nerdcommenter'        " comment stuff like toggling lines
 Plug 'vim-airline/vim-airline'         " status line
 Plug 'tpope/vim-fugitive'              " git integration
-Plug 'jacoborus/tender'                " colorscheme
+Plug 'rakr/vim-one'                    " one-colorscheme
 Plug 'mileszs/ack.vim'                 " search tool
 Plug 'valloric/youcompleteme'          " autocomplete plugin that works with a compiled component (pre-req MacVim)
 Plug 'vim-syntastic/syntastic'         " syntax checks / linting
@@ -49,7 +50,9 @@ nnoremap z<space> za          " map code fold toggle to 'z space'
 """""""""""""""""""""""""""""""""""""""""
 set t_Co=256                      " enable 256-color mode
 syntax enable                     " enable syntax highlighting
-colorscheme tender                " colorscheme from plugin above
+colorscheme one                   " colorscheme from plugin above
+set background=dark               " toggle light/dark
+"set background=light
 
 """""""""""""""""""""""""""""""""""""""""
 " UI Behavior                           "
@@ -63,6 +66,8 @@ set laststatus=2      " always display status line
 set ttyfast           " ttyfast and lazyredraw both perf optimizations
 set lazyredraw
 set scrolloff=5       " minimum # of lines above and below cursor on screen
+set colorcolumn=110   " show vertical bar at column 110 for line length
+
 """""""""""""""""""""""""""""""""""""""""
 " Text Formatting / Layout              "
 """""""""""""""""""""""""""""""""""""""""
@@ -72,7 +77,7 @@ set tabstop=2         " tab spacing
 set shiftwidth=2      " indent/outdent # of cols
 set expandtab         " use spaces instead of tabs
 
-
+let g:xml_syntax_folding = 0
 """""""""""""""""""""""""""""""""""""""""
 " Plugin Specific Configuration         "
 """""""""""""""""""""""""""""""""""""""""
@@ -89,13 +94,8 @@ let NERDTreeIgnore = ['node_modules']
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=42
 
-" CtrlP
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules)|(\.(swp|ico|git|svn))$'
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
-let g:ctrlp_dont_split = 'NERD' " only take over nerdtree window on initial open
-let g:ctrlp_max_files = 0
-let g:ctrlp_max_depth = 40
+" fzf
+nnoremap <silent> <C-p> :Files<CR>
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --column' " use silver searcher as backend for ack
