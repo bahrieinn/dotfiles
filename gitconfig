@@ -6,3 +6,6 @@
 [core]
   excludesfile = ~/.gitignore
 
+[user]
+  name = Brian Tong
+  email = btong34@gmail.com
