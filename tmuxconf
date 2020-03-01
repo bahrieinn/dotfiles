@@ -1,3 +1,5 @@
+# NOTE - These options are designed to work with tmux 3.x
+#
 # Add truecolor support
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 # # Default terminal is 256 colors
@@ -5,12 +7,11 @@ set -g default-terminal "screen-256color"
 
 # remap prefix from 'C-b' to 'C-a'
 unbind C-b
-set-option -g prefix C-a
-bind-key C-a send-prefix
+set -g prefix C-a
 
 # split panes using | and -
-bind \ split-window -h
-bind - split-window -v
+bind '\' split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
 unbind '"'
 unbind %
 
@@ -18,28 +19,20 @@ unbind %
 bind r source-file ~/.tmux.conf
 
 # Allows for faster key repetition
-set -s escape-time 0
-
-set-option repeat-time 0
+set -g escape-time 0
+set -g repeat-time 0
 
 # Turn mouse on
+# Note when mouse mode is on, selecting with a mouse, and releasing click will automatically copy contents to clipboard
 set -g mouse on
+bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e; send-keys -M'"
 
-####################################################
-## COPY AND PASTE SETUP
-## Prior to copy & past setup below, if on mac
-## `brew install reattach-to-user-namespace` first
-# vim keybindings in copy mode
-setw -g mode-keys vi
-
-# Setup 'v' to begin selection as in Vim
-bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
-
-# Update default binding of `Enter` to also use copy-pipe
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
-####################################################
+bind-key    -T copy-mode    C-w               send-keys -X copy-selection
+bind-key    -T copy-mode    MouseDragEnd1Pane send-keys -X copy-selection
+bind-key    -T copy-mode    M-w               send-keys -X copy-selection
+bind-key    -T copy-mode-vi C-j               send-keys -X copy-selection
+bind-key    -T copy-mode-vi Enter             send-keys -X copy-selection
+bind-key    -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection
 
 ####################################################
 # smart pane switching with awareness of vim splits
@@ -47,5 +40,5 @@ bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iq v
 bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-j) || tmux select-pane -D"
 bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-k) || tmux select-pane -U"
 bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-l) || tmux select-pane -R"
-bind -n C-\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys 'C-\\') || tmux select-pane -l"
+bind -n C-\\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys 'C-\\') || tmux select-pane -l"
 ####################################################

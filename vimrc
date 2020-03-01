@@ -18,7 +18,6 @@ Plug 'vim-airline/vim-airline'         " status line
 Plug 'tpope/vim-fugitive'              " git integration
 Plug 'junegunn/seoul256.vim'           " seoul256 colorscheme
 Plug 'mileszs/ack.vim'                 " search tool
-Plug 'valloric/youcompleteme'          " autocomplete plugin that works with a compiled component (pre-req MacVim)
 Plug 'vim-syntastic/syntastic'         " syntax checks / linting
 Plug 'christoomey/vim-tmux-navigator'  " navigate b/w tmux splits and vim splits
 
@@ -81,7 +80,6 @@ set nowrap            " dont wrap text
 set autoindent        " auto-indent
 set tabstop=2         " tab spacing
 set shiftwidth=2      " indent/outdent # of cols
-set expandtab         " use spaces instead of tabs
 
 let g:xml_syntax_folding = 0
 """""""""""""""""""""""""""""""""""""""""
@@ -104,9 +102,6 @@ let NERDTreeWinSize=42
 nnoremap <silent> <C-p> :Files<CR>
 " For fzf to ignore git stuff, pipe it through ag by setting the following in  ~/.bash_profile
 " export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-
-" ack.vim
-let g:ackprg = 'ag --vimgrep' " use silver searcher as backend for ack
 
 " vim-jsx
 let g:jsx_ext_required = 0 " enable jsx highlighting even for non *.jsx files
