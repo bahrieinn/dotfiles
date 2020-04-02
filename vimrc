@@ -20,17 +20,20 @@ Plug 'junegunn/seoul256.vim'           " seoul256 colorscheme
 Plug 'mileszs/ack.vim'                 " search tool
 Plug 'vim-syntastic/syntastic'         " syntax checks / linting
 Plug 'christoomey/vim-tmux-navigator'  " navigate b/w tmux splits and vim splits
+Plug 'yggdroot/indentline'
 
 " Language / framework specific plugins
 Plug 'mattn/emmet-vim'                 " HTML snippets
 Plug 'pangloss/vim-javascript'         " JS syntax
 Plug 'mxw/vim-jsx'                     " JSX (depends on ^ pangloss/vim-javascript)
-Plug 'vim-erlang/vim-erlang-runtime'   " Erlang
-Plug 'elixir-lang/vim-elixir'          " Elixir syntax
+"Plug 'vim-erlang/vim-erlang-runtime'   " Erlang
+"Plug 'elixir-lang/vim-elixir'          " Elixir syntax
 Plug 'vim-ruby/vim-ruby'               " Ruby syntax
 Plug 'tpope/vim-rails'                 " Rails
 Plug 'lervag/vimtex'                   " LaTeX support
-Plug 'kchmck/vim-coffee-script'        " Coffeescript
+"Plug 'kchmck/vim-coffee-script'        " Coffeescript
+Plug 'posva/vim-vue'                   " VueJS
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""
@@ -61,6 +64,7 @@ set number            " show line numbers
 set ignorecase        " make searches case-insensitive
 set ruler             " show info along bottom
 set cursorline        " show cursorline
+set cursorcolumn
 set hlsearch          " highlight searching
 set incsearch         " search as you type
 set smartcase         " lets you search for ALL CAPS
@@ -80,8 +84,15 @@ set nowrap            " dont wrap text
 set autoindent        " auto-indent
 set tabstop=2         " tab spacing
 set shiftwidth=2      " indent/outdent # of cols
+set expandtab         " use spaces instead of tabs
 
 let g:xml_syntax_folding = 0
+
+"""""""""""""""""""""""""""""""""""""""""
+" Language Specific Configuration         "
+"""""""""""""""""""""""""""""""""""""""""
+autocmd FileType vue setlocal shiftwidth=2 softtabstop=2 expandtab
+
 """""""""""""""""""""""""""""""""""""""""
 " Plugin Specific Configuration         "
 """""""""""""""""""""""""""""""""""""""""
@@ -100,8 +111,6 @@ let NERDTreeWinSize=42
 
 " fzf
 nnoremap <silent> <C-p> :Files<CR>
-" For fzf to ignore git stuff, pipe it through ag by setting the following in  ~/.bash_profile
-" export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 " vim-jsx
 let g:jsx_ext_required = 0 " enable jsx highlighting even for non *.jsx files
