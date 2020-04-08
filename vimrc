@@ -13,7 +13,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
 Plug 'junegunn/fzf.vim'                " fuzzy search
 Plug 'ntpeters/vim-better-whitespace'  " Highlight and trim whitespace
 Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
-Plug 'scrooloose/nerdcommenter'        " comment stuff like toggling lines
+Plug 'preservim/nerdcommenter'         " comment stuff like toggling lines
 Plug 'vim-airline/vim-airline'         " status line
 Plug 'tpope/vim-fugitive'              " git integration
 Plug 'junegunn/seoul256.vim'           " seoul256 colorscheme
@@ -101,7 +101,9 @@ autocmd FileType vue setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd BufWritePre * StripWhitespace
 
 " nerdcommenter
-filetype plugin on    " used for nerdcommenter
+filetype plugin on              " used for nerdcommenter
+let g:NERDSpaceDelims = 1       " add a space after comment delimiters by default
+let g:NERDDefaultAlign = 'left' " align delimiters to the left
 
 " nerdtree
 nmap <leader>nt :NERDTreeToggle<cr>
