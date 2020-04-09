@@ -105,6 +105,27 @@ filetype plugin on              " used for nerdcommenter
 let g:NERDSpaceDelims = 1       " add a space after comment delimiters by default
 let g:NERDDefaultAlign = 'left' " align delimiters to the left
 
+" Add hooks for switching delimiters within Vue files (html, css, js)
+let g:ft = ''
+function! NERDCommenter_before()
+  if &ft == 'vue'
+    let g:ft = 'vue'
+    let stack = synstack(line('.'), col('.'))
+    if len(stack) > 0
+      let syn = synIDattr((stack)[0], 'name')
+      if len(syn) > 0
+        exe 'setf ' . substitute(tolower(syn), '^vue_', '', '')
+      endif
+    endif
+  endif
+endfunction
+function! NERDCommenter_after()
+  if g:ft == 'vue'
+    setf vue
+    let g:ft = ''
+  endif
+endfunction
+
 " nerdtree
 nmap <leader>nt :NERDTreeToggle<cr>
 let NERDTreeIgnore = ['node_modules']
