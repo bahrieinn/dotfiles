@@ -33,6 +33,7 @@ Plug 'tpope/vim-rails'                 " Rails
 Plug 'lervag/vimtex'                   " LaTeX support
 "Plug 'kchmck/vim-coffee-script'        " Coffeescript
 Plug 'posva/vim-vue'                   " VueJS
+Plug 'briancollins/vim-jst'            " JST/EJS syntax
 
 call plug#end()
 
