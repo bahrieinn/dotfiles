@@ -26,12 +26,12 @@ Plug 'yggdroot/indentline'
 " Language / framework specific plugins
 Plug 'mattn/emmet-vim'                 " HTML snippets
 Plug 'pangloss/vim-javascript'         " JS syntax
-Plug 'mxw/vim-jsx'                     " JSX (depends on ^ pangloss/vim-javascript)
+Plug 'maxmellon/vim-jsx-pretty'
 "Plug 'vim-erlang/vim-erlang-runtime'   " Erlang
 "Plug 'elixir-lang/vim-elixir'          " Elixir syntax
 Plug 'vim-ruby/vim-ruby'               " Ruby syntax
 Plug 'tpope/vim-rails'                 " Rails
-Plug 'lervag/vimtex'                   " LaTeX support
+" Plug 'lervag/vimtex'                   " LaTeX support
 "Plug 'kchmck/vim-coffee-script'        " Coffeescript
 Plug 'posva/vim-vue'                   " VueJS
 Plug 'briancollins/vim-jst'            " JST/EJS syntax
