@@ -16,8 +16,9 @@ Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
 Plug 'preservim/nerdcommenter'         " comment stuff like toggling lines
 Plug 'vim-airline/vim-airline'         " status line
 Plug 'tpope/vim-fugitive'              " git integration
-Plug 'junegunn/seoul256.vim'           " seoul256 colorscheme
-Plug 'mileszs/ack.vim'                 " search tool
+Plug 'junegunn/seoul256.vim'           " seoul256 colorscheme (good for dark)
+Plug 'NLKNguyen/papercolor-theme'      " papercolor colorscheme (good for light)
+" Plug 'mileszs/ack.vim'                 " search tool
 Plug 'vim-syntastic/syntastic'         " syntax checks / linting
 Plug 'christoomey/vim-tmux-navigator'  " navigate b/w tmux splits and vim splits
 Plug 'yggdroot/indentline'
@@ -56,7 +57,8 @@ syntax enable                     " enable syntax highlighting
 let g:seoul256_background = 235   " background darkness (233 darkest - 239 lightest)
 colorscheme seoul256              " colorscheme from plugin above
 set background=dark               " toggle light/dark
-"set background=light
+" colorscheme PaperColor          " use in conjunction with backgrond=light
+" set background=light
 
 """""""""""""""""""""""""""""""""""""""""
 " UI Behavior                           "
@@ -93,6 +95,7 @@ let g:xml_syntax_folding = 0
 " Language Specific Configuration         "
 """""""""""""""""""""""""""""""""""""""""
 autocmd FileType vue setlocal shiftwidth=2 softtabstop=2 expandtab
+au BufRead,BufNewFile *.rabl setf ruby " treat .rabl as .rb file
 
 """""""""""""""""""""""""""""""""""""""""
 " Plugin Specific Configuration         "
@@ -135,6 +138,7 @@ let NERDTreeWinSize=42
 
 " fzf
 nnoremap <silent> <C-p> :Files<CR>
+let g:fzf_preview_window = 'right:60%' " Always enable preview window on the right with 60% width
 
 " vim-jsx
 let g:jsx_ext_required = 0 " enable jsx highlighting even for non *.jsx files
@@ -143,3 +147,4 @@ let g:jsx_ext_required = 0 " enable jsx highlighting even for non *.jsx files
 let g:airline_section_x = ''
 let g:airline_section_y = ''
 let g:airline_section_z = ''
+

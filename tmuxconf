@@ -8,6 +8,7 @@ set -g default-terminal "screen-256color"
 # Show path in status bar
 set -g automatic-rename-format '#S #{pane_current_path}'
 set -g status-interval 5
+
 #set -g status-left-length 100
 #set -g status-left "#{pane_current_path}"
 
