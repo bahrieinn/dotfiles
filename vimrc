@@ -9,7 +9,7 @@
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'             " Tree directory
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search NOTE: If encountering errors running :FILES, try reinstalling vim. This config should work on unix with Vim 8.2
 Plug 'junegunn/fzf.vim'                " fuzzy search
 Plug 'ntpeters/vim-better-whitespace'  " Highlight and trim whitespace
 Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
@@ -137,8 +137,12 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=42
 
 " fzf
+
+" ctrl+p opens up fzf pane
+" change popup to anchor to bottom, with full width, and half height
 nnoremap <silent> <C-p> :Files<CR>
-let g:fzf_preview_window = 'right:60%' " Always enable preview window on the right with 60% width
+let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.5, 'relative': v:true, 'yoffset': 1.0 } }
+
 
 " vim-jsx
 let g:jsx_ext_required = 0 " enable jsx highlighting even for non *.jsx files
