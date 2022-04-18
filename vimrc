@@ -132,6 +132,7 @@ endfunction
 
 " nerdtree
 nmap <leader>nt :NERDTreeToggle<cr>
+nmap <leader>nf :NERDTreeFind<cr>
 let NERDTreeIgnore = ['node_modules']
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=42
