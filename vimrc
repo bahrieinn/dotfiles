@@ -18,6 +18,8 @@ Plug 'vim-airline/vim-airline'         " status line
 Plug 'tpope/vim-fugitive'              " git integration
 Plug 'junegunn/seoul256.vim'           " seoul256 colorscheme (good for dark)
 Plug 'NLKNguyen/papercolor-theme'      " papercolor colorscheme (good for light)
+Plug 'sainnhe/everforest'              " everforest colorscheme
+Plug 'lifepillar/vim-solarized8'       " soloarized colorscheme
 " Plug 'mileszs/ack.vim'                 " search tool
 Plug 'vim-syntastic/syntastic'         " syntax checks / linting
 Plug 'christoomey/vim-tmux-navigator'  " navigate b/w tmux splits and vim splits
@@ -35,6 +37,7 @@ Plug 'tpope/vim-rails'                 " Rails
 "Plug 'kchmck/vim-coffee-script'        " Coffeescript
 Plug 'posva/vim-vue'                   " VueJS
 Plug 'briancollins/vim-jst'            " JST/EJS syntax
+Plug 'ngmy/vim-rubocop'                " Rubocop
 
 call plug#end()
 
@@ -52,13 +55,22 @@ nnoremap z<space> za          " map code fold toggle to 'z space'
 """""""""""""""""""""""""""""""""""""""""
 " Theme / Colors                        "
 """""""""""""""""""""""""""""""""""""""""
+" if has('termguicolors')
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"   set termguicolors
+" endif
+
 set t_Co=256                      " enable 256-color mode
 syntax enable                     " enable syntax highlighting
 let g:seoul256_background = 235   " background darkness (233 darkest - 239 lightest)
 colorscheme seoul256              " colorscheme from plugin above
-set background=dark               " toggle light/dark
+" set background=dark               " toggle light/dark
 " colorscheme PaperColor          " use in conjunction with backgrond=light
-" set background=light
+set background=dark
+" let g:everforest_background = 'hard'
+" let g:everforest_better_performance = 1
+" colorscheme solarized8
 
 """""""""""""""""""""""""""""""""""""""""
 " UI Behavior                           "
@@ -149,7 +161,11 @@ let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.5, 'relative': v:true
 let g:jsx_ext_required = 0 " enable jsx highlighting even for non *.jsx files
 
 " vim-airline
+" let g:airline#extensions#branch#enabled = 1
+let g:airline_section_b = fnamemodify(getcwd(), ':t')
 let g:airline_section_x = ''
 let g:airline_section_y = ''
-let g:airline_section_z = ''
+let g:airline_section_z = airline#section#create(['branch'])
 
+" Recognize Jenkinsfile as groovy syntax
+autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
