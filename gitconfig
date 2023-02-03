@@ -1,11 +1,50 @@
-[alias]
-  st = status
-  cm = commit -m
-  co = checkout
-
-[core]
-  excludesfile = ~/.gitignore
-
 [user]
   name = Brian Tong
-  email = btong34@gmail.com
+  # email = brian.tong@doxo.com
+
+[alias]
+  commit = commit --verbose # I like to see all of the changes whenever I make a commit, to be certain of what's in and what's out
+  amend = commit --verbose --amend # I like to see all of the changes whenever I make a commit, to be certain of what's in and what's out
+  ci = commit --verbose
+  ca = commit --verbose --all
+  cm = commit -m
+  co = checkout
+  f = fetch
+  history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  pu = push
+  pl = pull
+  st = status -sb
+  stat = status
+  b = branch
+
+  # slightly more useful log outputs
+  L = log --decorate
+  l = log --pretty=oneline --decorate --abbrev-commit
+  ll = log --pretty=oneline --decorate --abbrev-commit --max-count=15
+
+[push]
+  default = current # changes default behavior of "$ git push" to ONLY push my current branch
+
+[pull]
+  default = current # changes default behavior of "$git pull" to ONLY pull down changes for my current branch
+
+# some nice coloring
+[color]
+  ui = true
+  sh = auto
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+  nobranch = red bold
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
