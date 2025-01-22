@@ -1,4 +1,5 @@
 # NOTE - These options are designed to work with tmux 3.x
+set-option -g default-shell /bin/bash
 #
 # Add truecolor support
 set-option -ga terminal-overrides ",xterm-256color:Tc"

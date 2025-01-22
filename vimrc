@@ -8,19 +8,23 @@
 """""""""""""""""""""""""""""""""""""""""
 call plug#begin()
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'             " Tree directory
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy search NOTE: If encountering errors running :FILES, try reinstalling vim. This config should work on unix with Vim 8.2
 Plug 'junegunn/fzf.vim'                " fuzzy search
 Plug 'ntpeters/vim-better-whitespace'  " Highlight and trim whitespace
-Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
+" Plug 'terryma/vim-multiple-cursors'    " Sublime style multiple cursors
 Plug 'preservim/nerdcommenter'         " comment stuff like toggling lines
 Plug 'vim-airline/vim-airline'         " status line
 Plug 'tpope/vim-fugitive'              " git integration
 Plug 'junegunn/seoul256.vim'           " seoul256 colorscheme (good for dark)
 Plug 'NLKNguyen/papercolor-theme'      " papercolor colorscheme (good for light)
 Plug 'sainnhe/everforest'              " everforest colorscheme
+Plug 'morhetz/gruvbox'                 " gruvbox colorscheme
 Plug 'lifepillar/vim-solarized8'       " soloarized colorscheme
-" Plug 'mileszs/ack.vim'                 " search tool
+Plug 'mileszs/ack.vim'                 " search tool
 Plug 'vim-syntastic/syntastic'         " syntax checks / linting
 Plug 'christoomey/vim-tmux-navigator'  " navigate b/w tmux splits and vim splits
 Plug 'yggdroot/indentline'
@@ -38,6 +42,10 @@ Plug 'tpope/vim-rails'                 " Rails
 Plug 'posva/vim-vue'                   " VueJS
 Plug 'briancollins/vim-jst'            " JST/EJS syntax
 Plug 'ngmy/vim-rubocop'                " Rubocop
+Plug 'eslint/eslint'                   " eslint
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'amadeus/vim-mjml'                " mjml syntax support
+Plug 'github/copilot.vim'              " Github copilot will take my job :(
 
 call plug#end()
 
@@ -51,27 +59,25 @@ command! W w                  " map W to w so it save happens anyway
 command! Q q                  " map Q to q
 vmap <C-c> :w !pbcopy<CR><CR> " CTRL+c to copy to clipboard
 nnoremap z<space> za          " map code fold toggle to 'z space'
+:autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)')) " Don't fold on start
 
 """""""""""""""""""""""""""""""""""""""""
 " Theme / Colors                        "
 """""""""""""""""""""""""""""""""""""""""
-" if has('termguicolors')
-"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"   set termguicolors
-" endif
+if has('termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 set t_Co=256                      " enable 256-color mode
 syntax enable                     " enable syntax highlighting
 let g:seoul256_background = 235   " background darkness (233 darkest - 239 lightest)
 colorscheme seoul256              " colorscheme from plugin above
-" set background=dark               " toggle light/dark
+set background=dark               " toggle light/dark
 " colorscheme PaperColor          " use in conjunction with backgrond=light
-set background=dark
-" let g:everforest_background = 'hard'
-" let g:everforest_better_performance = 1
-" colorscheme solarized8
-
+" colorscheme everforest          " use in conjunction with backgrond=light
+hi CursorLine   cterm=NONE ctermbg=16 ctermfg=NONE
 """""""""""""""""""""""""""""""""""""""""
 " UI Behavior                           "
 """""""""""""""""""""""""""""""""""""""""
@@ -92,6 +98,7 @@ set showmatch
 set scrolloff=5       " keep cursor this many lines away from top/bottom of screen
 set colorcolumn=110   " show vertical bar at column 110 for line length
 
+
 """""""""""""""""""""""""""""""""""""""""
 " Text Formatting / Layout              "
 """""""""""""""""""""""""""""""""""""""""
@@ -100,6 +107,8 @@ set autoindent        " auto-indent
 set tabstop=2         " tab spacing
 set shiftwidth=2      " indent/outdent # of cols
 set expandtab         " use spaces instead of tabs
+" set foldmethod=syntax " enable code folding
+let g:vim_json_conceal=0 " Override IndentLine's conceal behavior for JSON files (so double quotes are shown)
 
 let g:xml_syntax_folding = 0
 
@@ -149,6 +158,15 @@ let NERDTreeIgnore = ['node_modules']
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=42
 
+" Needed bc setting vim-json-conceal to 0 reveals brackets around folders in
+" nerdtree
+exec 'autocmd filetype nerdtree set conceallevel=3'
+exec 'autocmd filetype nerdtree set concealcursor=nvic'
+
+" nerdtree-syntax-highlighting
+let g:NERDTreeLimitedSyntax = 1
+
+
 " fzf
 
 " ctrl+p opens up fzf pane
@@ -156,6 +174,71 @@ let NERDTreeWinSize=42
 nnoremap <silent> <C-p> :Files<CR>
 let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.5, 'relative': v:true, 'yoffset': 1.0 } }
 
+" ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+""""""""""""""
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ ]
+" May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
+" utf-8 byte sequence
+set encoding=utf-8
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+" delays and poor user experience
+set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+"""""""""""" END coc config """""""""""""""
 
 " vim-jsx
 let g:jsx_ext_required = 0 " enable jsx highlighting even for non *.jsx files
