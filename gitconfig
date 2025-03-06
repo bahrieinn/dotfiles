@@ -1,6 +1,6 @@
 [user]
   name = Brian Tong
-  # email = brian.tong@doxo.com
+  email = brian.tong@meetfabric.com
 
 [alias]
   commit = commit --verbose # I like to see all of the changes whenever I make a commit, to be certain of what's in and what's out

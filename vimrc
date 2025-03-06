@@ -46,6 +46,7 @@ Plug 'eslint/eslint'                   " eslint
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'amadeus/vim-mjml'                " mjml syntax support
 Plug 'github/copilot.vim'              " Github copilot will take my job :(
+Plug 'hashivim/vim-terraform'         " Terraform syntax support
 
 call plug#end()
 
@@ -157,6 +158,7 @@ nmap <leader>nf :NERDTreeFind<cr>
 let NERDTreeIgnore = ['node_modules']
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=42
+let NERDTreeShowHidden=1
 
 " Needed bc setting vim-json-conceal to 0 reveals brackets around folders in
 " nerdtree
