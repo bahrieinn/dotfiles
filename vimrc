@@ -43,10 +43,12 @@ Plug 'posva/vim-vue'                   " VueJS
 Plug 'briancollins/vim-jst'            " JST/EJS syntax
 Plug 'ngmy/vim-rubocop'                " Rubocop
 Plug 'eslint/eslint'                   " eslint
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'amadeus/vim-mjml'                " mjml syntax support
 Plug 'github/copilot.vim'              " Github copilot will take my job :(
 Plug 'hashivim/vim-terraform'         " Terraform syntax support
+
+au BufRead,BufNewFile Dockerfile.ui set filetype=dockerfile
 
 call plug#end()
 
@@ -75,7 +77,7 @@ set t_Co=256                      " enable 256-color mode
 syntax enable                     " enable syntax highlighting
 let g:seoul256_background = 235   " background darkness (233 darkest - 239 lightest)
 colorscheme seoul256              " colorscheme from plugin above
-set background=dark               " toggle light/dark
+" set background=light               " toggle light/dark
 " colorscheme PaperColor          " use in conjunction with backgrond=light
 " colorscheme everforest          " use in conjunction with backgrond=light
 hi CursorLine   cterm=NONE ctermbg=16 ctermfg=NONE
@@ -174,7 +176,8 @@ let g:NERDTreeLimitedSyntax = 1
 " ctrl+p opens up fzf pane
 " change popup to anchor to bottom, with full width, and half height
 nnoremap <silent> <C-p> :Files<CR>
-let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.5, 'relative': v:true, 'yoffset': 1.0 } }
+let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.5, 'relative': v:true, 'yoffset': 1.0, 'preview': 'right:20%' } }
+let g:fzf_files_options = '--delimiter=/ --with-nth=2..'
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -238,7 +241,7 @@ nmap <silent> gr <Plug>(coc-references)
 " Highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 """""""""""" END coc config """""""""""""""
 
